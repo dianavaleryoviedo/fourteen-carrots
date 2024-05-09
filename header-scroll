@@ -1,0 +1,66 @@
+function loadExternalScripts() {
+  var gsapScript = document.createElement('script');
+  gsapScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js';
+  gsapScript.async = true;
+
+  var scrollTriggerScript = document.createElement('script');
+  scrollTriggerScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js';
+  scrollTriggerScript.async = true;
+
+  document.body.appendChild(gsapScript);
+  document.body.appendChild(scrollTriggerScript);
+
+
+  gsapScript.onload = function() {
+    console.log('GSAP script loaded.');
+    scrollTriggerScript.onload = function() {
+      console.log('ScrollTrigger script loaded.');
+
+
+      gsap.registerPlugin(ScrollTrigger);
+
+gsap.from("#collection-6627af3469c23d7939320c95 .header-inner", {
+  scale: window.innerWidth <= 900 ? 2 : 3.5,
+  duration: 1,
+  scrollTrigger:{
+    trigger: 'section[data-section-id="6627cbf0b34c38077f358d7a"]',
+    start: "top top",
+    end: "+=100",
+    endTrigger: 'section[data-section-id="6627cbf0b34c38077f358d7a"]',
+    scrub: 0.8,
+  }
+});
+ScrollTrigger.refresh();
+
+
+
+  gsap.from("#collection-6627af3469c23d7939320c95 .burger", {
+   opacity: 0,
+    scrollTrigger:{
+      trigger: 'section[data-section-id="6627cbf0b34c38077f358d7a"]',
+      start: "top top",
+      end: "top top",
+      endTrigger: 'section[data-section-id="6627cbf0b34c38077f358d7a"]',
+      scrub: 0,
+    }
+});
+ScrollTrigger.refresh()  
+
+
+  gsap.from("#collection-6627af3469c23d7939320c95 .header .sqs-announcement-bar-dropzone", {
+   opacity: 0,
+    scrollTrigger:{
+      trigger: 'section[data-section-id="6627cbf0b34c38077f358d7a"]',
+      start: "top top",
+      end: "top top",
+      endTrigger: 'section[data-section-id="6627cbf0b34c38077f358d7a"]',
+      scrub: 0,
+    }
+});
+ScrollTrigger.refresh()  
+    };
+  };
+}
+
+
+loadExternalScripts();
